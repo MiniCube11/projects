@@ -1,23 +1,52 @@
+import { useState } from 'react';
 import Project from './Project';
 import { projects } from './projectsData';
-import styled from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { LightTheme, DarkTheme } from './Themes'
 
-const AppContainer = styled.div`
-  font-family: 'Lato', sans-serif;
+import dark from './icons/dark.svg';
+import light from './icons/light.svg';
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    font-family: 'Lato', sans-serif;
+    background-color: ${props => props.theme.background};
+  }
+`
+
+const HeadingContent = styled.div`
+  margin: 125px 0;
+`
+
+const DarkModeButton = styled.button`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 5px;
+  background-color: transparent;
+  border: none;
 `
 
 const ProjectsContainer = styled.div`
+  width: 80vw;
+  margin-left: 9vw;
+  margin-bottom: 100px;
   display: grid;
   grid-template-columns: repeat(3, minmax(250px, 1fr));
   grid-gap: 20px;
 `
 
 const Title = styled.h1`
-  font-size: 2.5em;
+  margin-left: 10vw;
+  margin-bottom: 25px;
+  font-size: 2.7em;
+  color: ${props => props.theme.textColor};
 `
 
 const Description = styled.p`
+  margin-left: 10vw;
   font-size: 1.2em;
+  color: ${props => props.theme.textColor};
 `
 
 function sortProjects(projects, sortBy) {
@@ -34,16 +63,28 @@ function sortProjects(projects, sortBy) {
 }
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(x => !x)
+  }
+
   return (
-    <AppContainer>
-      <Title>Projects</Title>
-      <Description>A collection of projects that I've worked on.</Description>
-      <ProjectsContainer>
+    <ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
+      <GlobalStyles />
+      <HeadingContent>
+        <Title>Projects</Title>
+        <Description>A collection of projects that I've worked on.</Description>
+      </HeadingContent>
+      <DarkModeButton onClick={toggleDarkMode}>
+        <img src={darkMode ? light : dark} alt='' />
+      </DarkModeButton>
+      <ProjectsContainer dark={darkMode}>
         {sortProjects(projects, null).map((project) => 
           <Project project={project}/>
         )}
       </ProjectsContainer>
-    </AppContainer>
+    </ThemeProvider>
   );
 }
 

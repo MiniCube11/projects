@@ -5,18 +5,20 @@ import github from './icons/github.svg'
 import link from './icons/link.svg'
 
 const ProjectContainer = styled.div`
-    background-color: #FCFCFC;
-    border: 1px solid #C4C7D2;
+    background-color: ${props => props.theme.cardBackground};
+    border: ${props => props.theme.cardBorder};
     border-radius: 17px;
     padding: 35px;
 `
 
 const Name = styled.h2`
+    color: ${props => props.theme.textColor};
     font-weight: bold;
     margin-bottom: 20px;
 `
 
 const Description = styled.p`
+    color: ${props => props.theme.textColor};
     height: 40px;
     margin-bottom: 40px;
 `
