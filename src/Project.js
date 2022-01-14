@@ -58,7 +58,7 @@ function Project({ project }) {
             <Bottom>
                 <Left>
                     {project.tech.map((tech) => 
-                        <Tech>{tech}</Tech>
+                        <Tech key={tech}>{tech}</Tech>
                     )}
                 </Left>
                 <Right>

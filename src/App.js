@@ -94,7 +94,7 @@ function App() {
       </DarkModeButton>
       <ProjectsContainer dark={darkMode}>
         {sortProjects(projects, null).map((project) => 
-          <Project project={project}/>
+          <Project project={project} key={project.name}/>
         )}
       </ProjectsContainer>
     </ThemeProvider>
