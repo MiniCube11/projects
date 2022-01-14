@@ -69,7 +69,7 @@ const GithubIcon = styled(GithubSvg)`
     }
 `
 
-function Project({ project, theme }) {
+function Project({ project }) {
     return (
         <ProjectContainer>
             <Name>{project.name}</Name>

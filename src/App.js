@@ -13,6 +13,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  body, h1, h2, p, div {
+    transition: all 0.2s ease;
+  }
+
   body {
     font-family: 'Lato', sans-serif;
     background-color: ${props => props.theme.background};
