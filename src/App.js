@@ -30,6 +30,7 @@ const DarkModeButton = styled.button`
   padding: 5px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `
 
 const ProjectsContainer = styled.div`

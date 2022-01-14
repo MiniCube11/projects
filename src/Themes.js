@@ -4,6 +4,7 @@ export const LightTheme = {
     cardBackground: "#FCFCFC",
     cardBorder: "1px solid #C4C7D2",
     iconColor: "black",
+    hoverColor: "#75AAFF",
 }
 
 export const DarkTheme = {
@@ -12,4 +13,5 @@ export const DarkTheme = {
     cardBackground: "#1E1E1E",
     cardBorder: "1px solid transparent",
     iconColor: "#D5D5D5",
+    hoverColor: "#75AAFF",
 }

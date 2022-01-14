@@ -50,11 +50,23 @@ const Link = styled.a`
 const LinkIcon = styled(LinkSvg)`
     width: 30px;
     stroke: ${props => props.theme.iconColor};
+    transition: stroke 0.2s ease;
+
+    &:hover {
+        stroke: ${props => props.theme.hoverColor};
+        transition: stroke 0.2s ease;
+    }
 `
 
 const GithubIcon = styled(GithubSvg)`
     width: 30px;
     stroke: ${props => props.theme.iconColor};
+    transition: stroke 0.2s ease;
+
+    &:hover {
+        stroke: ${props => props.theme.hoverColor};
+        transition: stroke 0.2s ease;
+    }
 `
 
 function Project({ project, theme }) {
