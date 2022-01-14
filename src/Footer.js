@@ -8,11 +8,12 @@ const FooterContainer = styled.div`
 const Copyright = styled.p`
     margin-left: 10vw;
     margin-bottom: 60px;
+    color: ${props => props.theme.textColor};
 `
 
 const WebsiteLink = styled.a`
     margin: 0 4px;
-    color: black;
+    color: ${props => props.theme.textColor};
     text-decoration: none;
 
     &:hover {
@@ -35,7 +36,7 @@ function Footer() {
         <FooterContainer>
             <Copyright>© 2022
                 <WebsiteLink href="https://minicube11.github.io/">Ching Lam Lau</WebsiteLink> /
-                <SourceLink href="#">Source Code</SourceLink>
+                <SourceLink href="https://github.com/MiniCube11/projects">Source Code</SourceLink>
             </Copyright>
         </FooterContainer>
     )
