@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Project from './Project';
 import { projects } from './projectsData';
+import Footer from './Footer';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { LightTheme, DarkTheme } from './Themes'
 
@@ -13,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
-  body, h1, h2, p, div {
+  body, h1, h2, p, div, a {
     transition: all 0.2s ease;
   }
 
@@ -40,7 +41,7 @@ const DarkModeButton = styled.button`
 const ProjectsContainer = styled.div`
   width: 80vw;
   margin-left: 9vw;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
   display: grid;
   grid-template-columns: repeat(1, minmax(250px, 1fr));
   grid-gap: 20px;
@@ -104,6 +105,7 @@ function App() {
           <Project project={project} key={project.name}/>
         )}
       </ProjectsContainer>
+      <Footer />
     </ThemeProvider>
   );
 }
