@@ -97,7 +97,7 @@ function App() {
       </HeadingContent>
       <DarkModeButton onClick={toggleDarkMode}>
         {darkMode ?
-          <DarkSvg stroke="#D5D5D5" /> : <LightSvg stroke="black" />
+          <LightSvg stroke="#D5D5D5" /> : <DarkSvg stroke="black" />
         }
       </DarkModeButton>
       <ProjectsContainer dark={darkMode}>
