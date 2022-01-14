@@ -4,8 +4,8 @@ import { projects } from './projectsData';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { LightTheme, DarkTheme } from './Themes'
 
-import dark from './icons/dark.svg';
-import light from './icons/light.svg';
+import { ReactComponent as LightSvg } from './icons/light.svg' 
+import { ReactComponent as DarkSvg } from './icons/dark.svg' 
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -90,7 +90,9 @@ function App() {
         <Description>A collection of projects that I've worked on.</Description>
       </HeadingContent>
       <DarkModeButton onClick={toggleDarkMode}>
-        <img src={darkMode ? light : dark} alt='' />
+        {darkMode ?
+          <DarkSvg stroke="#D5D5D5" /> : <LightSvg stroke="black" />
+        }
       </DarkModeButton>
       <ProjectsContainer dark={darkMode}>
         {sortProjects(projects, null).map((project) => 

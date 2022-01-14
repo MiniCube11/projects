@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import github from './icons/github.svg'
-import link from './icons/link.svg'
+import { ReactComponent as GithubSvg } from './icons/github.svg'
+import { ReactComponent as LinkSvg } from './icons/link.svg'
+
 
 const ProjectContainer = styled.div`
     background-color: ${props => props.theme.cardBackground};
@@ -46,11 +47,17 @@ const Link = styled.a`
     margin-left: 10px;
 `
 
-const LinkIcon = styled.img`
-    
+const LinkIcon = styled(LinkSvg)`
+    width: 30px;
+    stroke: ${props => props.theme.iconColor};
 `
 
-function Project({ project }) {
+const GithubIcon = styled(GithubSvg)`
+    width: 30px;
+    stroke: ${props => props.theme.iconColor};
+`
+
+function Project({ project, theme }) {
     return (
         <ProjectContainer>
             <Name>{project.name}</Name>
@@ -64,12 +71,12 @@ function Project({ project }) {
                 <Right>
                     {project.link && 
                         <Link href={project.link} target="_blank" rel="noopener noreferrer">
-                            <LinkIcon src={link} alt="link"></LinkIcon>
+                            <LinkIcon />
                         </Link>
                     }
                     {project.github && 
                         <Link href={"https://github.com/MiniCube11/" + project.github} target="_blank" rel="noopener noreferrer">
-                            <LinkIcon src={github} alt="github"></LinkIcon>
+                            <GithubIcon />
                         </Link>
                     }
                 </Right>
