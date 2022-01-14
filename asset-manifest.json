@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.js": "/projects/static/js/main.140f3334.js",
+    "static/media/light.svg": "/projects/static/media/light.ed23b430cb9f4147d84c4c1379c6cc97.svg",
+    "index.html": "/projects/index.html",
+    "static/media/github.svg": "/projects/static/media/github.e7ab8675a2cbadea548cafe724065b9e.svg",
+    "static/media/link.svg": "/projects/static/media/link.90577cce48ecfddde9064420d52d9f5f.svg",
+    "static/media/dark.svg": "/projects/static/media/dark.a82cae44d086a825a6fa3dfb65dce3ba.svg",
+    "main.140f3334.js.map": "/projects/static/js/main.140f3334.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.140f3334.js"
+  ]
+}
