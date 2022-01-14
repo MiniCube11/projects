@@ -46,6 +46,10 @@ const Link = styled.a`
     margin-left: 10px;
 `
 
+const LinkIcon = styled.img`
+    
+`
+
 function Project({ project }) {
     return (
         <ProjectContainer>
@@ -60,12 +64,12 @@ function Project({ project }) {
                 <Right>
                     {project.link && 
                         <Link href={project.link} target="_blank" rel="noopener noreferrer">
-                            <img src={link} alt="link"></img>
+                            <LinkIcon src={link} alt="link"></LinkIcon>
                         </Link>
                     }
                     {project.github && 
                         <Link href={"https://github.com/MiniCube11/" + project.github} target="_blank" rel="noopener noreferrer">
-                            <img src={github} alt="github"></img>
+                            <LinkIcon src={github} alt="github"></LinkIcon>
                         </Link>
                     }
                 </Right>

@@ -8,6 +8,11 @@ import dark from './icons/dark.svg';
 import light from './icons/light.svg';
 
 const GlobalStyles = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     font-family: 'Lato', sans-serif;
     background-color: ${props => props.theme.background};
@@ -32,8 +37,16 @@ const ProjectsContainer = styled.div`
   margin-left: 9vw;
   margin-bottom: 100px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  grid-template-columns: repeat(1, minmax(250px, 1fr));
   grid-gap: 20px;
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+
+  @media (min-width: 1400px) {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
 `
 
 const Title = styled.h1`
