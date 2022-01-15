@@ -108,7 +108,7 @@ const Title = styled.h1`
 `
 
 const Description = styled.p`
-  margin-left: 10vw;
+  margin: 0 10vw;
   font-size: 1.2em;
   color: ${props => props.theme.textColor};
 `
