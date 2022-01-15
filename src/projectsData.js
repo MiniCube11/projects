@@ -210,3 +210,7 @@ export const projects = [
         link: "https://scratch.mit.edu/projects/300568765"
     },
 ]
+
+for (let i = 0; i < projects.length; i++) {
+    projects[i].id = i;
+}
