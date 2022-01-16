@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { ReactComponent as GithubSvg } from './icons/github.svg'
-import { ReactComponent as LinkSvg } from './icons/link.svg'
+import { ReactComponent as GithubSvg } from '../icons/github.svg'
+import { ReactComponent as LinkSvg } from '../icons/link.svg'
 
 
 const ProjectContainer = styled.div`

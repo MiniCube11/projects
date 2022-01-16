@@ -2,34 +2,18 @@ import { useState } from 'react';
 import SortOption from './SortOption';
 import FilterOption from './FilterOption';
 import Project from './Project';
-import { projects } from './projectsData';
+import { projects } from '../data/projectsData';
 import Footer from './Footer';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { LightTheme, DarkTheme } from './Themes'
+import styled, { ThemeProvider } from 'styled-components';
+import { LightTheme, DarkTheme } from '../styles/Themes'
+import { GlobalStyle } from '../styles/GlobalStyle'
 
-import { ReactComponent as LightSvg } from './icons/light.svg' 
-import { ReactComponent as DarkSvg } from './icons/dark.svg'
-import { ReactComponent as SortSvg } from './icons/sort.svg'
-import { ReactComponent as FilterSvg } from './icons/filter.svg'
-import { ReactComponent as UpSvg } from './icons/up.svg'
-import { ReactComponent as DownSvg } from './icons/down.svg'
-
-
-const GlobalStyles = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-  }
-
-  body, h1, h2, p, div, a {
-    transition: all 0.2s ease;
-  }
-
-  body {
-    font-family: 'Lato', sans-serif;
-    background-color: ${props => props.theme.background};
-  }
-`
+import { ReactComponent as LightSvg } from '../icons/light.svg' 
+import { ReactComponent as DarkSvg } from '../icons/dark.svg'
+import { ReactComponent as SortSvg } from '../icons/sort.svg'
+import { ReactComponent as FilterSvg } from '../icons/filter.svg'
+import { ReactComponent as UpSvg } from '../icons/up.svg'
+import { ReactComponent as DownSvg } from '../icons/down.svg'
 
 const HeadingContent = styled.div`
   margin: 125px 0;
@@ -214,7 +198,7 @@ function App() {
 
   return (
     <ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
-      <GlobalStyles />
+      <GlobalStyle />
       <HeadingContent>
         <Title>Projects</Title>
         <Description>A collection of projects that I've worked on.</Description>
