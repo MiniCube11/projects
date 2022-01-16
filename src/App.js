@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import Option from './Option';
+import SortOption from './SortOption';
+import FilterOption from './FilterOption';
 import Project from './Project';
 import { projects } from './projectsData';
 import Footer from './Footer';
@@ -9,6 +10,7 @@ import { LightTheme, DarkTheme } from './Themes'
 import { ReactComponent as LightSvg } from './icons/light.svg' 
 import { ReactComponent as DarkSvg } from './icons/dark.svg'
 import { ReactComponent as SortSvg } from './icons/sort.svg'
+import { ReactComponent as FilterSvg } from './icons/filter.svg'
 import { ReactComponent as UpSvg } from './icons/up.svg'
 import { ReactComponent as DownSvg } from './icons/down.svg'
 
@@ -47,7 +49,11 @@ const SortIcon = styled(SortSvg)`
   stroke: ${props => props.theme.textColor};
 `
 
-const SortOptions = styled.div`
+const FilterIcon = styled(FilterSvg)`
+  stroke: ${props => props.theme.textColor};
+`
+
+const Options = styled.div`
   position: absolute;  
   top: 70px;
   right: 20px;
@@ -147,6 +153,8 @@ function App() {
   const [sortBy, setSortBy] = useState("Complexity");
   const [sortOpen, setSortOpen] = useState(false);
   const [sortDescending, setSortDescending] = useState(true);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [filters, setFilters] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -155,6 +163,12 @@ function App() {
 
   const toggleSortOpen = () => {
     setSortOpen(x => !x)
+    setFilterOpen(false)
+  }
+
+  const toggleFilterOpen = () => {
+    setFilterOpen(x => !x)
+    setSortOpen(false)
   }
 
   const setSort = (sortBy) => {
@@ -162,10 +176,40 @@ function App() {
     setSortDescending(true);
   }
 
+  const addFilter = (filter) => {
+    setFilters(x => [...x, filter])
+  }
+
+  const removeFilter = (_filter) => {
+    setFilters(x => {
+      return x.filter((value) => _filter !== value)
+    })
+  }
+
+  const toggleFilter = (filter) => {
+    if (filters.includes(filter)) removeFilter(filter);
+    else addFilter(filter);
+  }
+
   const sortProjects = (projects) => {
     if (sortBy === "Name") return sortByName(projects, sortDescending);
     else if (sortBy === "Date") return sortByDate(projects, sortDescending);
     else if (sortBy === "Complexity") return sortByComplexity(projects, sortDescending);
+  }
+
+  const filterProjects = (projects) => {
+    const filteredProjects = [];
+    if (filters.length === 0) return projects;
+    for (const project of projects) {
+      let include = false;
+      for (const filter of filters) {
+        if (project.tech.includes(filter)) {
+          include = true;
+        }
+      }
+      if (include) filteredProjects.push(project);
+    }
+    return filteredProjects;
   }
 
   return (
@@ -183,17 +227,28 @@ function App() {
       <IconButton onClick={toggleSortOpen} right={70}>
         <SortIcon />
       </IconButton>
+      <IconButton onClick={toggleFilterOpen} right={120}>
+        <FilterIcon />
+      </IconButton>
       {sortOpen &&
-        <SortOptions>
-          <Option name={"Name"} sortBy={sortBy} setSortBy={setSort} />
-          <Option name={"Date"} sortBy={sortBy} setSortBy={setSort} />
-          <Option name={"Complexity"} sortBy={sortBy} setSortBy={setSort} />
+        <Options>
+          <SortOption name={"Name"} sortBy={sortBy} setSortBy={setSort} />
+          <SortOption name={"Date"} sortBy={sortBy} setSortBy={setSort} />
+          <SortOption name={"Complexity"} sortBy={sortBy} setSortBy={setSort} />
           <UpIcon onClick={() => setSortDescending(false)} active={!sortDescending} />
           <DownIcon onClick={() => setSortDescending(true)} active={sortDescending} />
-        </SortOptions>
+        </Options>
+      }
+      {filterOpen &&
+        <Options>
+          <FilterOption name={"Python"} filters={filters} toggleFilter={toggleFilter} />
+          <FilterOption name={"JavaScript"} filters={filters} toggleFilter={toggleFilter} />
+          <FilterOption name={"HTML+CSS"} filters={filters} toggleFilter={toggleFilter} />
+          <FilterOption name={"Scratch"} filters={filters} toggleFilter={toggleFilter} />
+        </Options>
       }
       <ProjectsContainer dark={darkMode}>
-        {sortProjects(projects).map((project) => 
+        {filterProjects(sortProjects(projects)).map((project) => 
           <Project project={project} key={project.name}/>
         )}
       </ProjectsContainer>

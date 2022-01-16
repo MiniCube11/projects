@@ -15,7 +15,7 @@ const OptionContainer = styled.div`
     }
 `
 
-function Option({ name, sortBy, setSortBy }) {
+function SortOption({ name, sortBy, setSortBy }) {
     return (
         <OptionContainer onClick={() => setSortBy(name)}>
             <Name active={sortBy === name}>{name}</Name>
@@ -23,4 +23,4 @@ function Option({ name, sortBy, setSortBy }) {
     )
 }
 
-export default Option
+export default SortOption
