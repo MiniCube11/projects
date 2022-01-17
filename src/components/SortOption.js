@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { ProjectsContext } from './App'
 
 const Name = styled.p`
     color: ${props => props.active ? props.theme.activeColor : props.theme.textColor};
@@ -15,10 +16,11 @@ const OptionContainer = styled.div`
     }
 `
 
-function SortOption({ name, sortBy, setSortBy }) {
+function SortOption({ name }) {
+    const { state, dispatch } = useContext(ProjectsContext)
     return (
-        <OptionContainer onClick={() => setSortBy(name)}>
-            <Name active={sortBy === name}>{name}</Name>
+        <OptionContainer onClick={() => dispatch({type: "setSortBy", payload: name})}>
+            <Name active={state.sortBy === name}>{name}</Name>
         </OptionContainer>
     )
 }
