@@ -32,7 +32,7 @@ const ProjectsContainer = styled.div`
 const initialState = {
   darkMode: false,
   sortBy: "Complexity",
-  sortDescending: true,
+  sortDescending: false,
   filters: []
 }
 
@@ -41,7 +41,7 @@ const reducer = (state, action) => {
     case "toggleDarkMode":
       return { ...state, darkMode: !state.darkMode }
     case "setSortBy":
-      return { ...state, sortBy: action.payload, sortDescending: true }
+      return { ...state, sortBy: action.payload, sortDescending: false }
     case "setSortDescending":
       return { ...state, sortDescending: action.payload }
     case "toggleFilter":

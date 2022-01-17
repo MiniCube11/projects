@@ -13,8 +13,8 @@ export const sortByDate = (projects, descending) => {
   projects.sort((a, b) => {
     let res = a.year - b.year;
     if (res === 0) res = a.month - b.month;
-    if (descending) return -res;
-    return res;
+    if (descending) return res;
+    return -res;
   })
   return projects;
 }
